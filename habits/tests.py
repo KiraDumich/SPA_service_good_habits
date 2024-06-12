@@ -102,11 +102,7 @@ class HabitsTestCase(APITestCase):
             "duration": 90,
             "is_public": False
         }
-        response = self.client.post(reverse('habits:habit_edit', args=[id]), data=data, follow=True)
-        # response = self.client.patch(
-        #     f'/habits/edit/{self.habit.id}',
-        #     data=data, follow=False, secure=False
-        # )
+        response = self.client.post(reverse('habits:habit_edit', args=[self.habit.id]), data=data, follow=True)
 
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.habit.refresh_from_db()
