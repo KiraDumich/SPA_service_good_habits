@@ -13,6 +13,7 @@ class User(AbstractUser):
     avatar = models.ImageField(upload_to='users/', verbose_name='аватар', **NULLABLE)
     country = models.CharField(max_length=35, verbose_name='страна', **NULLABLE)
     city = models.CharField(max_length=35, verbose_name='город', **NULLABLE)
+    chat_id = models.CharField(max_length=100, verbose_name='номер чата', **NULLABLE)
 
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = []
