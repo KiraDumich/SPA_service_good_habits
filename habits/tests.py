@@ -1,8 +1,11 @@
 from django.test import TestCase
+from django.urls import reverse
 
 # Create your tests here.
 from rest_framework.test import APITestCase, APIClient
 from rest_framework import status
+
+from habits.views import HabitsUpdateAPIView
 from users.models import User
 from habits.models import Habit
 
@@ -80,7 +83,7 @@ class HabitsTestCase(APITestCase):
         }
         response = self.client.get(
             f'/habits/view/{self.habit.id}',
-            data=data
+            data=data, follow=True
         )
 
         self.assertEqual(response.status_code, status.HTTP_200_OK)
@@ -99,10 +102,11 @@ class HabitsTestCase(APITestCase):
             "duration": 90,
             "is_public": False
         }
-        response = self.client.patch(
-            f'/habits/edit/{self.habit.id}',
-            data=data
-        )
+        response = self.client.post(reverse('habits:habit_edit', args=[id]), data=data, follow=True)
+        # response = self.client.patch(
+        #     f'/habits/edit/{self.habit.id}',
+        #     data=data, follow=False, secure=False
+        # )
 
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.habit.refresh_from_db()

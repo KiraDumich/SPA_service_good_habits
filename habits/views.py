@@ -8,6 +8,7 @@ from habits.serializer import HabitsSerializer
 from habits.models import Habit
 from habits.permissions import Owner
 from habits.pagination import HabitsPaginator
+from habits.tasks import send_notification
 
 
 class HabitsCreateAPIView(generics.CreateAPIView):
@@ -17,6 +18,7 @@ class HabitsCreateAPIView(generics.CreateAPIView):
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
+        send_notification()
 
 
 class HabitsListAPIView(generics.ListAPIView):
