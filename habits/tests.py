@@ -21,7 +21,7 @@ class HabitsTestCase(APITestCase):
         self.habit = Habit.objects.create(
             owner=self.user,
             place='дома',
-            time="19:00:00",
+            time="2024-09-09 11:42:49",
             action='Прочитать книгу',
             is_pleasant=False,
             related_habit=None,
@@ -37,7 +37,7 @@ class HabitsTestCase(APITestCase):
         data = {
             "owner": self.user.id,
             "place": 'дома',
-            "time": "19:00:00",
+            "time": "2024-09-09 11:42:49",
             "action": 'Прочитать книгу',
             "is_pleasant": False,
             "related_habit": "",
@@ -61,7 +61,7 @@ class HabitsTestCase(APITestCase):
         print('RESPONSE', response.content)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.json(), {"count": 1, "next": None, "previous": None, "results": [
-            {'id': self.habit.id, 'place': 'дома', 'time': '19:00:00', 'action': 'Прочитать книгу',
+            {'id': self.habit.id, 'place': 'дома', 'time': '2024-09-09T11:42:49Z', 'action': 'Прочитать книгу',
              'is_pleasant': False, 'period': 3, 'reward': 'Приготовить десерт',
              'duration': 60, 'is_public': True, 'owner': self.user.pk, 'related_habit': None}
         ]}
@@ -72,7 +72,7 @@ class HabitsTestCase(APITestCase):
         data = {
             "owner": self.user.id,
             "place": 'дома',
-            "time": "19:00:00",
+            "time": "2024-09-09 11:42:49",
             "action": 'Прочитать книгу',
             "is_pleasant": False,
             "related_habit": "",
@@ -93,7 +93,7 @@ class HabitsTestCase(APITestCase):
         data = {
             "owner": self.user.id,
             "place": 'Улица',
-            "time": "20:00:00",
+            "time": "2024-09-09 11:42:49",
             "action": 'Пройти пешком 2 км',
             "is_pleasant": True,
             "related_habit": "",
@@ -118,7 +118,7 @@ class HabitsTestCase(APITestCase):
         data = {
             "owner": self.user.id,
             "place": 'Улица',
-            "time": "20:00:00",
+            "time": "2024-09-08 11:42:49",
             "action": 'Пройти пешком 2 км',
             "is_pleasant": True,
             "related_habit": "",

@@ -18,7 +18,7 @@ def send_notification():  # Функция отправки уведомлени
         if habit.time >= time_now - timedelta(minutes=15):
             message = f"Не забудь про привычку '{habit.action}'\n" \
                       f"После этого можно:\n \
-{habit.habits if habit.habits else habit.reward}"
+{habit.related_habit if habit.related_habit else habit.reward}"
             send_message(token=token,
-                         chat_id=habit.user.chat_id,
+                         chat_id=habit.owner.chat_id,
                          message=message)
