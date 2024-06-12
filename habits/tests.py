@@ -93,7 +93,7 @@ class HabitsTestCase(APITestCase):
         data = {
             "owner": self.user.id,
             "place": 'Улица',
-            "time": "2019-08-24T14:15:22Z",
+            "time": "2024-12-06 19:42:49",
             "action": 'Пройти пешком 2 км',
             "is_pleasant": True,
             "related_habit": "",
@@ -116,7 +116,7 @@ class HabitsTestCase(APITestCase):
             "place": 'Улица',
             "time": "2024-09-08 11:42:49",
             "action": 'Пройти пешком 2 км',
-            "is_pleasant": True,
+            "is_pleasant": False,
             "related_habit": "",
             "period": 3,
             "reward": "",
