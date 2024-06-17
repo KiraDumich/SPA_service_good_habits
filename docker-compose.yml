@@ -6,6 +6,7 @@ services:
     image: redis
     ports:
       - '6379:6379'
+    restart: always
 
   db:
     restart: always
@@ -42,6 +43,7 @@ services:
     depends_on:
       - redis
       - app
+    restart: always # настройка, чтобы в случае ошибки перезапускался автоматически
 
   celery_beat:
     build: .
@@ -50,6 +52,7 @@ services:
     depends_on:
       - redis
       - app
+    restart: always
 
 
 volumes:
